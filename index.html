@@ -51,6 +51,91 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-brand-500 selection:text-white overflow-x-hidden">
 
+    <!-- START / MODE SELECTION SCREEN OVERLAY -->
+    <div id="modeSelectModal" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="max-w-4xl w-full space-y-6 text-center">
+            
+            <div class="space-y-2">
+                <div class="inline-block p-3 bg-brand-600/20 border border-brand-500/40 rounded-2xl mb-2">
+                    <i class="fa-solid fa-chart-line text-brand-400 text-3xl md:text-4xl animate-pulse"></i>
+                </div>
+                <h1 class="arcade-text text-xl md:text-3xl text-white">BEURS TYCOON</h1>
+                <p class="text-sm md:text-base text-slate-400 max-w-xl mx-auto">Kies een spelmodus om te beginnen met traden op de virtuele beurs!</p>
+            </div>
+
+            <!-- Gamemode Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-left">
+                
+                <!-- Mode 1: Classic Tutorial -->
+                <button onclick="startGameWithMode('classic')" class="game-panel p-5 transition-all duration-200 border-l-4 border-emerald-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-950 text-emerald-400 rounded border border-emerald-800">LEERMODUS</span>
+                            <span class="text-3xl">🌱</span>
+                        </div>
+                        <h3 class="font-bold text-base text-white group-hover:text-emerald-400 transition">🎓 Klassiek & Oefenen</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Rustig tempo. Leer kaarsen en patronen herkennen zonder tijdsdruk.</p>
+                    </div>
+                    <span class="mt-4 text-xs font-bold text-emerald-400 flex items-center gap-1">Start Modus <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                </button>
+
+                <!-- Mode 2: Newsflash -->
+                <button onclick="startGameWithMode('newsflash')" class="game-panel p-5 transition-all duration-200 border-l-4 border-amber-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-amber-950 text-amber-400 rounded border border-amber-800">NIEUWS</span>
+                            <span class="text-3xl">⚡</span>
+                        </div>
+                        <h3 class="font-bold text-base text-white group-hover:text-amber-400 transition">📰 Newsflash Modus</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Brekend wereldnieuws beïnvloedt direct de markt! Reageer snel op het nieuws.</p>
+                    </div>
+                    <span class="mt-4 text-xs font-bold text-amber-400 flex items-center gap-1">Start Modus <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                </button>
+
+                <!-- Mode 3: Debt Payment -->
+                <button onclick="startGameWithMode('debt')" class="game-panel p-5 transition-all duration-200 border-l-4 border-rose-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-rose-950 text-rose-400 rounded border border-rose-800">UITDAGING</span>
+                            <span class="text-3xl">🏦</span>
+                        </div>
+                        <h3 class="font-bold text-base text-white group-hover:text-rose-400 transition">💸 Schuld Afbetalen</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Start met $100 & $500 schuld. Maak voldoende winst om je schuld af te lossen!</p>
+                    </div>
+                    <span class="mt-4 text-xs font-bold text-rose-400 flex items-center gap-1">Start Modus <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                </button>
+
+                <!-- Mode 4: Chaos Mode -->
+                <button onclick="startGameWithMode('chaos')" class="game-panel p-5 transition-all duration-200 border-l-4 border-purple-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-purple-950 text-purple-400 rounded border border-purple-800">HIGH RISK</span>
+                            <span class="text-3xl">🔥</span>
+                        </div>
+                        <h3 class="font-bold text-base text-white group-hover:text-purple-400 transition">🌀 Chaos Modus</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Extreem snelle, onvoorspelbare en volatiele koersen voor de ervaren trader.</p>
+                    </div>
+                    <span class="mt-4 text-xs font-bold text-purple-400 flex items-center gap-1">Start Modus <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                </button>
+
+                <!-- Mode 5: Pattern Hunter -->
+                <button onclick="startGameWithMode('pattern')" class="game-panel p-5 transition-all duration-200 border-l-4 border-blue-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group md:col-span-2 lg:col-span-1">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-blue-950 text-blue-400 rounded border border-blue-800">PATRONEN</span>
+                            <span class="text-3xl">🎯</span>
+                        </div>
+                        <h3 class="font-bold text-base text-white group-hover:text-blue-400 transition">🎯 Patroon Jager</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Herken specifieke candlesticks en maak winst op patronen voor extra bonus XP!</p>
+                    </div>
+                    <span class="mt-4 text-xs font-bold text-blue-400 flex items-center gap-1">Start Modus <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
     <!-- Top Navigation & Stats Bar -->
     <header class="bg-slate-900 border-b border-slate-800 p-3 md:p-4 sticky top-0 z-40 shadow-lg">
         <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
@@ -76,21 +161,14 @@
                     <p class="text-[10px] text-slate-400 uppercase font-bold">Kapitaal</p>
                     <p id="playerCash" class="font-mono font-bold text-emerald-400 text-base md:text-lg">$ 100.00</p>
                 </div>
-                
-                <div class="h-8 w-px bg-slate-800"></div>
 
                 <!-- Debt (Shown when active) -->
                 <div class="text-center hidden sm:block" id="debtHeaderBox">
-                    <p class="text-[10px] text-rose-400 uppercase font-bold">Resterende Schuld</p>
-                    <p id="playerDebt" class="font-mono font-bold text-rose-400 text-base md:text-lg">$ 0.00</p>
-                </div>
-
-                <div class="h-8 w-px bg-slate-800 hidden sm:block"></div>
-
-                <!-- Timer -->
-                <div class="text-center">
-                    <p class="text-[10px] text-slate-400 uppercase font-bold">Sessie Tijd</p>
-                    <p id="sessionTimer" class="font-mono font-bold text-amber-400 text-base md:text-lg">05:00</p>
+                    <div class="h-8 w-px bg-slate-800 inline-block mr-3 sm:mr-6 align-middle"></div>
+                    <div class="inline-block align-middle">
+                        <p class="text-[10px] text-rose-400 uppercase font-bold">Resterende Schuld</p>
+                        <p id="playerDebt" class="font-mono font-bold text-rose-400 text-base md:text-lg">$ 0.00</p>
+                    </div>
                 </div>
 
                 <div class="h-8 w-px bg-slate-800"></div>
@@ -104,6 +182,9 @@
 
             <!-- Quick Action Buttons -->
             <div class="flex items-center gap-2">
+                <button onclick="openModeSelectModal()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-brand-300 rounded-xl border border-brand-500/30 text-xs font-bold transition flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-gamepad"></i> <span class="hidden md:inline">Wissel Modus</span>
+                </button>
                 <button onclick="openDagboek()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-xl border border-amber-500/30 text-xs font-bold transition flex items-center gap-2 shadow-sm">
                     <i class="fa-solid fa-book-open"></i> <span class="hidden md:inline">Dagboek</span>
                 </button>
@@ -124,7 +205,6 @@
                 <h2 class="font-bold text-slate-400 uppercase tracking-wider text-xs flex items-center">
                     <i class="fa-solid fa-gamepad mr-2 text-brand-400"></i> Kies een Spelmodus
                 </h2>
-                <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded">Sessie: 5 min</span>
             </div>
 
             <!-- Mode 1: Classic Tutorial -->
@@ -157,7 +237,7 @@
                     <div>
                         <span class="text-[10px] font-bold px-2 py-0.5 bg-rose-950 text-rose-400 rounded border border-rose-800">UITDAGING</span>
                         <h3 class="font-bold text-sm text-white mt-1">💸 Schuld Afbetalen</h3>
-                        <p class="text-xs text-slate-400 mt-0.5">Start met $100 & $500 schuld. Los af binnen 5 minuten!</p>
+                        <p class="text-xs text-slate-400 mt-0.5">Start met $100 & $500 schuld. Los je schuld af!</p>
                     </div>
                     <span class="text-2xl">🏦</span>
                 </div>
@@ -344,7 +424,7 @@
     </div>
 
     <!-- MODAL 1: Full Step-by-Step Interactive Tutorial -->
-    <div id="tutorialModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div id="tutorialModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
         <div class="bg-slate-900 border-4 border-brand-500 rounded-3xl max-w-xl w-full p-6 md:p-8 shadow-2xl space-y-6 relative">
             
             <div class="flex justify-between items-center border-b border-slate-800 pb-4">
@@ -359,7 +439,7 @@
             <div id="tutStep1" class="space-y-4">
                 <h3 class="text-lg font-bold text-amber-400">Welkom bij Beurs Tycoon!</h3>
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    In deze game leer je hoe échte handelaren op de beurs beslissingen maken. Je hebt steeds <strong>5 minuten per sessie</strong> om je kapitaal zo ver mogelijk te laten groeien.
+                    In deze game leer je hoe échte handelaren op de beurs beslissingen maken. Oefen op je eigen tempo met het laten groeien van je kapitaal.
                 </p>
                 <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-xs">
                     <p class="font-bold text-brand-400"><i class="fa-solid fa-bullseye mr-1"></i> Jouw Doel:</p>
@@ -451,7 +531,6 @@
                 <!-- Pattern 1: Hammer -->
                 <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex gap-4 items-start">
                     <div class="w-16 h-20 bg-slate-900 rounded-xl border border-slate-700 flex flex-col items-center justify-center relative flex-shrink-0">
-                        <!-- Hammer SVG illustration -->
                         <div class="w-0.5 h-14 bg-slate-400 absolute"></div>
                         <div class="w-5 h-4 bg-emerald-500 absolute top-3 rounded-sm z-10"></div>
                     </div>
@@ -468,7 +547,6 @@
                 <!-- Pattern 2: Shooting Star -->
                 <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex gap-4 items-start">
                     <div class="w-16 h-20 bg-slate-900 rounded-xl border border-slate-700 flex flex-col items-center justify-center relative flex-shrink-0">
-                        <!-- Shooting Star SVG illustration -->
                         <div class="w-0.5 h-14 bg-slate-400 absolute"></div>
                         <div class="w-5 h-4 bg-rose-500 absolute bottom-3 rounded-sm z-10"></div>
                     </div>
@@ -478,7 +556,7 @@
                             <span class="px-2 py-0.5 bg-rose-950 text-rose-400 text-[10px] font-bold rounded border border-rose-800">DALING (Bearish)</span>
                         </div>
                         <p class="text-slate-300">Een klein kaarslichaam aan de onderkant met een hele lange steel aan de bovenkant.</p>
-                        <p class="text-slate-400 italic">Betekenis: Kopers pusheden de prijs omhoog, maar werden afgewezen door verkopers. Signaleert een mogelijke daling.</p>
+                        <p class="text-slate-400 italic">Betekenis: Kopers pusheden de prijs omhoog, maar worden afgewezen door verkopers. Signaleert een mogelijke daling.</p>
                     </div>
                 </div>
 
@@ -538,44 +616,6 @@
         </div>
     </div>
 
-    <!-- MODAL 3: Session End Summary (5-Minute Timer Reached) -->
-    <div id="sessionSummaryModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-slate-900 border-4 border-brand-500 rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl text-center space-y-6">
-            <div class="text-5xl animate-bounce">🏆</div>
-            <div>
-                <h2 class="arcade-text text-base text-white">Sessie Afgelopen!</h2>
-                <p class="text-xs text-slate-400 mt-1">Hier zijn je resultaten van de afgelopen 5 minuten:</p>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3 bg-slate-950 p-4 rounded-2xl border border-slate-800 text-left text-xs">
-                <div>
-                    <span class="text-slate-500 uppercase text-[10px] font-bold">Eindkapitaal</span>
-                    <p id="sumFinalCash" class="font-mono text-lg font-bold text-emerald-400">$ 100.00</p>
-                </div>
-                <div>
-                    <span class="text-slate-500 uppercase text-[10px] font-bold">Totale Winst/Verlies</span>
-                    <p id="sumProfit" class="font-mono text-lg font-bold text-white">$ 0.00</p>
-                </div>
-                <div>
-                    <span class="text-slate-500 uppercase text-[10px] font-bold">Aantal Trades</span>
-                    <p id="sumTrades" class="font-mono text-lg font-bold text-amber-400">0</p>
-                </div>
-                <div>
-                    <span class="text-slate-500 uppercase text-[10px] font-bold">Winrate</span>
-                    <p id="sumWinrate" class="font-mono text-lg font-bold text-brand-400">0%</p>
-                </div>
-            </div>
-
-            <div id="sumGradeBox" class="p-3 bg-brand-950/60 border border-brand-500/50 rounded-xl text-xs text-brand-300 font-bold">
-                Beoordeling: Leerling Handelaar 🎓
-            </div>
-
-            <button onclick="restartSession()" class="w-full py-4 bg-brand-600 hover:bg-brand-500 text-white arcade-text text-xs rounded-xl transition transform hover:scale-105 border-b-4 border-brand-800">
-                START NIEUWE 5-MINUTEN SESSIE <i class="fa-solid fa-rotate-right ml-2"></i>
-            </button>
-        </div>
-    </div>
-
 
     <script>
         // ==========================================
@@ -592,8 +632,6 @@
         };
 
         let currentMode = 'classic'; // classic, newsflash, debt, chaos, pattern
-        let sessionSeconds = 300; // 5 minutes timer
-        let timerInterval = null;
         let simInterval = null;
         let newsInterval = null;
 
@@ -622,7 +660,7 @@
             'debt': {
                 name: 'Schuld Afbetalen Modus',
                 tag: 'Uitdaging',
-                desc: 'Start met $100 cash en $500 schuld. Los je schuld af voor de 5 minuten om zijn!',
+                desc: 'Start met $100 cash en $500 schuld. Los je schuld af met je tradewinsten!',
                 speed: 1200,
                 volatility: 1.0,
                 hasDebt: true,
@@ -661,76 +699,20 @@
             initChartData();
             updateUI();
             drawChart();
-            startSessionTimer();
-            startSimulation();
+            // Startscherm blijft open bij het inladen
         };
 
-        function startSessionTimer() {
-            if (timerInterval) clearInterval(timerInterval);
-            timerInterval = setInterval(() => {
-                sessionSeconds--;
-                
-                const mins = Math.floor(sessionSeconds / 60);
-                const secs = sessionSeconds % 60;
-                document.getElementById('sessionTimer').innerText = 
-                    `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-
-                if (sessionSeconds <= 0) {
-                    endSession();
-                }
-            }, 1000);
-        }
-
-        function endSession() {
-            clearInterval(timerInterval);
-            clearInterval(simInterval);
-            if (newsInterval) clearInterval(newsInterval);
-
-            // Calculate metrics
-            const totalProfit = player.cash - player.initialCash;
-            const winrate = player.tradesCount > 0 ? Math.round((player.winsCount / player.tradesCount) * 100) : 0;
-
-            document.getElementById('sumFinalCash').innerText = `$ ${player.cash.toFixed(2)}`;
-            
-            const profEl = document.getElementById('sumProfit');
-            profEl.innerText = `$ ${totalProfit >= 0 ? '+' : ''}${totalProfit.toFixed(2)}`;
-            profEl.className = totalProfit >= 0 ? 'font-mono text-lg font-bold text-emerald-400' : 'font-mono text-lg font-bold text-rose-400';
-
-            document.getElementById('sumTrades').innerText = player.tradesCount;
-            document.getElementById('sumWinrate').innerText = `${winrate}%`;
-
-            let grade = "Leerling Handelaar 🎓";
-            if (totalProfit > 100) grade = "Meester Belegger 🚀";
-            else if (totalProfit > 20) grade = "Winstgevende Trader 📈";
-            else if (totalProfit < 0) grade = "Risico-Zoeker ⚠️";
-
-            document.getElementById('sumGradeBox').innerText = `Beoordeling: ${grade}`;
-
-            document.getElementById('sessionSummaryModal').classList.remove('hidden');
-        }
-
-        function restartSession() {
-            player.cash = 100.00;
-            player.initialCash = 100.00;
-            player.tradesCount = 0;
-            player.winsCount = 0;
-            sessionSeconds = 300;
-            activePos = null;
-
-            if (currentMode === 'debt') {
-                player.debt = 500.00;
-            } else {
-                player.debt = 0.00;
+        function openModeSelectModal() {
+            if (activePos) {
+                showToast("Actieve Trade", "Sluit eerst je huidige trade voordat je van modus wisselt.", "⚠️", true);
+                return;
             }
+            document.getElementById('modeSelectModal').classList.remove('hidden');
+        }
 
-            document.getElementById('sessionSummaryModal').classList.add('hidden');
-            document.getElementById('activePositionPanel').classList.add('hidden');
-            document.getElementById('tradingControls').classList.remove('hidden');
-
-            initChartData();
-            updateUI();
-            startSessionTimer();
-            startSimulation();
+        function startGameWithMode(modeKey) {
+            document.getElementById('modeSelectModal').classList.add('hidden');
+            switchMode(modeKey);
         }
 
         // ==========================================
@@ -968,7 +950,7 @@
 
             let profitMargin = activePos.type === 'long' ? percentChange : -percentChange;
             
-            // Leverage multiplier x2 for game fun
+            // Leverage multiplier x2.5
             const profitValue = activePos.amount * profitMargin * 2.5;
             const profitPct = (profitValue / activePos.amount) * 100;
 
