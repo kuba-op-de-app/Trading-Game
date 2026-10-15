@@ -51,7 +51,7 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-brand-500 selection:text-white overflow-x-hidden">
 
-    <!-- 1. STARTSCHERM OVERLAY (VERBETERPUNT 1 & 2) -->
+    <!-- STARTSCHERM OVERLAY -->
     <div id="startScreenModal" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-4">
         <div class="max-w-4xl w-full space-y-6 text-center">
             
@@ -61,7 +61,7 @@
                 </div>
                 <h1 class="arcade-text text-2xl md:text-4xl text-white">BEURS TYCOON</h1>
                 <p class="text-sm md:text-base text-slate-400 max-w-xl mx-auto">
-                    Kies een spelmodus en start een <strong>5-minuten trading sessie</strong>![cite: 1]
+                    Kies een spelmodus en start een <strong>5-minuten trading sessie</strong>!
                 </p>
             </div>
 
@@ -169,7 +169,7 @@
 
                 <div class="h-8 w-px bg-slate-800 hidden sm:block"></div>
 
-                <!-- 5-Minute Timer (BEHOUDEN) -->
+                <!-- 5-Minute Timer -->
                 <div class="text-center">
                     <p class="text-[10px] text-slate-400 uppercase font-bold">Sessie Tijd</p>
                     <p id="sessionTimer" class="font-mono font-bold text-amber-400 text-base md:text-lg">05:00</p>
@@ -186,10 +186,14 @@
 
             <!-- Action Buttons -->
             <div class="flex items-center gap-2">
+                <!-- TOEGEVOEGD: Knop naar Beginscherm -->
+                <button onclick="backToStartScreen()" class="px-3 py-2 bg-brand-600/20 hover:bg-brand-600/30 text-brand-300 rounded-xl border border-brand-500/40 text-xs font-bold transition flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-house"></i> <span class="hidden md:inline">Beginscherm</span>
+                </button>
                 <button onclick="openDagboek()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-xl border border-amber-500/30 text-xs font-bold transition flex items-center gap-2 shadow-sm">
                     <i class="fa-solid fa-book-open"></i> <span class="hidden md:inline">Dagboek</span>
                 </button>
-                <button onclick="startFullTutorial()" class="px-3 py-2 bg-brand-600/20 hover:bg-brand-600/30 text-brand-300 rounded-xl border border-brand-500/40 text-xs font-bold transition flex items-center gap-2">
+                <button onclick="startFullTutorial()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl border border-slate-700 text-xs font-bold transition flex items-center gap-2">
                     <i class="fa-solid fa-graduation-cap"></i> <span class="hidden md:inline">Tutorial</span>
                 </button>
             </div>
@@ -211,7 +215,7 @@
                 <p id="currentModeDesc" class="text-xs text-slate-400 mt-1">Rustig tempo. Leer kaarsen en patronen herkennen.</p>
             </div>
 
-            <!-- VERBETERPUNT 5: Duidelijkheid Patronen Overzicht -->
+            <!-- Duidelijkheid Patronen Overzicht -->
             <div class="game-panel p-4 bg-slate-900/90 border border-slate-700 rounded-2xl space-y-3">
                 <div class="flex items-center justify-between">
                     <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
@@ -290,7 +294,7 @@
                 </div>
             </div>
 
-            <!-- VERBETERPUNT 3: Trading Controls & Meerdere Aankopen (Multi-Position Support) -->
+            <!-- Trading Controls & Meerdere Aankopen (Multi-Position Support) -->
             <div class="game-panel p-5 space-y-4">
                 
                 <!-- Input Controls -->
@@ -370,7 +374,7 @@
         </div>
     </div>
 
-    <!-- VERBETERPUNT 4: TUTORIAL MODAL MET SLIDER NAVIGATIE -->
+    <!-- TUTORIAL MODAL MET SLIDER NAVIGATIE -->
     <div id="tutorialModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
         <div class="bg-slate-900 border-4 border-brand-500 rounded-3xl max-w-xl w-full p-6 md:p-8 shadow-2xl space-y-6 relative">
             
@@ -442,7 +446,7 @@
                 </div>
             </div>
 
-            <!-- VERBETERPUNT 4: Interactive Slider Control -->
+            <!-- Interactive Slider Control -->
             <div class="space-y-2 pt-2 border-t border-slate-800">
                 <div class="flex justify-between text-[10px] text-slate-400 font-mono">
                     <span>Intro</span>
@@ -569,7 +573,6 @@
                 Beoordeling: Leerling Handelaar 🎓
             </div>
 
-            <!-- Knop brengt speler terug naar het startscherm om een nieuwe modus/sessie te kiezen -->
             <button onclick="backToStartScreen()" class="w-full py-4 bg-brand-600 hover:bg-brand-500 text-white arcade-text text-xs rounded-xl transition transform hover:scale-105 border-b-4 border-brand-800">
                 KIES NIEUWE SESSIE <i class="fa-solid fa-rotate-right ml-2"></i>
             </button>
@@ -592,13 +595,13 @@
         };
 
         let currentMode = 'classic';
-        let sessionSeconds = 300; // 5-minuten sessie timer behouden (300 sec)
+        let sessionSeconds = 300; // 5-minuten sessie timer
         let timerInterval = null;
         let simInterval = null;
         let newsInterval = null;
 
         let chartData = [];
-        let activePositions = []; // VERBETERPUNT 3: Array voor meerdere gelijktijdige aankopen!
+        let activePositions = []; // Meerdere gelijktijdige aankopen
         let nextPositionId = 1;
         let currentPattern = null;
         let pendingNewsImpact = 0;
@@ -661,7 +664,6 @@
             initChartData();
             updateUI();
             drawChart();
-            // Startscherm blijft zichtbaar tot moduskeuze
         };
 
         function startSessionWithMode(modeKey) {
@@ -744,6 +746,10 @@
         }
 
         function backToStartScreen() {
+            clearInterval(timerInterval);
+            clearInterval(simInterval);
+            if (newsInterval) clearInterval(newsInterval);
+
             document.getElementById('sessionSummaryModal').classList.add('hidden');
             document.getElementById('startScreenModal').classList.remove('hidden');
         }
@@ -826,7 +832,7 @@
         }
 
         // ==========================================
-        // PATTERN RECOGNITION (VERBETERPUNT 5)
+        // PATTERN RECOGNITION
         // ==========================================
         function analyzePatterns(candle) {
             const body = Math.abs(candle.close - candle.open);
@@ -902,7 +908,7 @@
         }
 
         // ==========================================
-        // MULTI-POSITION TRADING (VERBETERPUNT 3)
+        // MULTI-POSITION TRADING
         // ==========================================
         function updateBetDisplay() {
             const val = document.getElementById('betSlider').value;
@@ -960,7 +966,6 @@
                 
                 pos.currentProfit = pos.amount * profitMargin * 2.5;
 
-                // Update UI elements for each open position item
                 const profEl = document.getElementById(`pos-profit-${pos.id}`);
                 if (profEl) {
                     const isProfit = pos.currentProfit >= 0;
@@ -972,7 +977,6 @@
 
         function renderPositionsList() {
             const container = document.getElementById('positionsList');
-            const noPosText = document.getElementById('noPositionsText');
             const closeAllBtn = document.getElementById('closeAllBtn');
             const countEl = document.getElementById('openPosCount');
 
@@ -1215,7 +1219,7 @@
         window.addEventListener('resize', drawChart);
 
         // ==========================================
-        // TUTORIAL MODAL SLIDER CONTROL (VERBETERPUNT 4)
+        // TUTORIAL MODAL SLIDER CONTROL
         // ==========================================
         let tutStep = 1;
 
