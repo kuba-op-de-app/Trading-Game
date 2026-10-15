@@ -51,84 +51,81 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-brand-500 selection:text-white overflow-x-hidden">
 
-    <!-- START / MODE SELECTION SCREEN OVERLAY -->
-    <div id="modeSelectModal" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-4">
+    <!-- 1. STARTSCHERM OVERLAY (VERBETERPUNT 1 & 2) -->
+    <div id="startScreenModal" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-4">
         <div class="max-w-4xl w-full space-y-6 text-center">
             
             <div class="space-y-2">
-                <div class="inline-block p-3 bg-brand-600/20 border border-brand-500/40 rounded-2xl mb-2">
-                    <i class="fa-solid fa-chart-line text-brand-400 text-3xl md:text-4xl animate-pulse"></i>
+                <div class="inline-block p-4 bg-brand-600/20 border border-brand-500/40 rounded-3xl mb-2">
+                    <i class="fa-solid fa-chart-line text-brand-400 text-4xl md:text-5xl animate-pulse"></i>
                 </div>
-                <h1 class="arcade-text text-xl md:text-3xl text-white">BEURS TYCOON</h1>
-                <p class="text-sm md:text-base text-slate-400 max-w-xl mx-auto">Kies een spelmodus om te beginnen met traden op de virtuele beurs!</p>
+                <h1 class="arcade-text text-2xl md:text-4xl text-white">BEURS TYCOON</h1>
+                <p class="text-sm md:text-base text-slate-400 max-w-xl mx-auto">
+                    Kies een spelmodus en start een <strong>5-minuten trading sessie</strong>![cite: 1]
+                </p>
             </div>
 
-            <!-- Gamemode Grid -->
+            <!-- Gamemode Grid voor Sessie Keuze -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-left">
                 
-                <!-- Mode 1: Classic Tutorial -->
-                <button onclick="startGameWithMode('classic')" class="game-panel p-5 transition-all duration-200 border-l-4 border-emerald-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
+                <button onclick="startSessionWithMode('classic')" class="game-panel p-5 transition-all duration-200 border-l-4 border-emerald-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
                     <div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-950 text-emerald-400 rounded border border-emerald-800">LEERMODUS</span>
                             <span class="text-3xl">🌱</span>
                         </div>
                         <h3 class="font-bold text-base text-white group-hover:text-emerald-400 transition">🎓 Klassiek & Oefenen</h3>
-                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Rustig tempo. Leer kaarsen en patronen herkennen zonder tijdsdruk.</p>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Rustig tempo. Leer kaarsen en patronen herkennen.</p>
                     </div>
-                    <span class="mt-4 text-xs font-bold text-emerald-400 flex items-center gap-1">Start Modus <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                    <span class="mt-4 text-xs font-bold text-emerald-400 flex items-center gap-1">Start 5-min Sessie <i class="fa-solid fa-play text-[10px]"></i></span>
                 </button>
 
-                <!-- Mode 2: Newsflash -->
-                <button onclick="startGameWithMode('newsflash')" class="game-panel p-5 transition-all duration-200 border-l-4 border-amber-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
+                <button onclick="startSessionWithMode('newsflash')" class="game-panel p-5 transition-all duration-200 border-l-4 border-amber-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
                     <div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-[10px] font-bold px-2 py-0.5 bg-amber-950 text-amber-400 rounded border border-amber-800">NIEUWS</span>
                             <span class="text-3xl">⚡</span>
                         </div>
                         <h3 class="font-bold text-base text-white group-hover:text-amber-400 transition">📰 Newsflash Modus</h3>
-                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Brekend wereldnieuws beïnvloedt direct de markt! Reageer snel op het nieuws.</p>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Brekend wereldnieuws beïnvloedt direct de markt!</p>
                     </div>
-                    <span class="mt-4 text-xs font-bold text-amber-400 flex items-center gap-1">Start Modus <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                    <span class="mt-4 text-xs font-bold text-amber-400 flex items-center gap-1">Start 5-min Sessie <i class="fa-solid fa-play text-[10px]"></i></span>
                 </button>
 
-                <!-- Mode 3: Debt Payment -->
-                <button onclick="startGameWithMode('debt')" class="game-panel p-5 transition-all duration-200 border-l-4 border-rose-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
+                <button onclick="startSessionWithMode('debt')" class="game-panel p-5 transition-all duration-200 border-l-4 border-rose-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
                     <div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-[10px] font-bold px-2 py-0.5 bg-rose-950 text-rose-400 rounded border border-rose-800">UITDAGING</span>
                             <span class="text-3xl">🏦</span>
                         </div>
                         <h3 class="font-bold text-base text-white group-hover:text-rose-400 transition">💸 Schuld Afbetalen</h3>
-                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Start met $100 & $500 schuld. Maak voldoende winst om je schuld af te lossen!</p>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Start met $100 & $500 schuld. Los af binnen 5 minuten!</p>
                     </div>
-                    <span class="mt-4 text-xs font-bold text-rose-400 flex items-center gap-1">Start Modus <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                    <span class="mt-4 text-xs font-bold text-rose-400 flex items-center gap-1">Start 5-min Sessie <i class="fa-solid fa-play text-[10px]"></i></span>
                 </button>
 
-                <!-- Mode 4: Chaos Mode -->
-                <button onclick="startGameWithMode('chaos')" class="game-panel p-5 transition-all duration-200 border-l-4 border-purple-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
+                <button onclick="startSessionWithMode('chaos')" class="game-panel p-5 transition-all duration-200 border-l-4 border-purple-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group">
                     <div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-[10px] font-bold px-2 py-0.5 bg-purple-950 text-purple-400 rounded border border-purple-800">HIGH RISK</span>
                             <span class="text-3xl">🔥</span>
                         </div>
                         <h3 class="font-bold text-base text-white group-hover:text-purple-400 transition">🌀 Chaos Modus</h3>
-                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Extreem snelle, onvoorspelbare en volatiele koersen voor de ervaren trader.</p>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Extreem snelle, onvoorspelbare en volatiele koersen.</p>
                     </div>
-                    <span class="mt-4 text-xs font-bold text-purple-400 flex items-center gap-1">Start Modus <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                    <span class="mt-4 text-xs font-bold text-purple-400 flex items-center gap-1">Start 5-min Sessie <i class="fa-solid fa-play text-[10px]"></i></span>
                 </button>
 
-                <!-- Mode 5: Pattern Hunter -->
-                <button onclick="startGameWithMode('pattern')" class="game-panel p-5 transition-all duration-200 border-l-4 border-blue-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group md:col-span-2 lg:col-span-1">
+                <button onclick="startSessionWithMode('pattern')" class="game-panel p-5 transition-all duration-200 border-l-4 border-blue-500 bg-slate-900 hover:bg-slate-800 hover:scale-105 flex flex-col justify-between group md:col-span-2 lg:col-span-1">
                     <div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-[10px] font-bold px-2 py-0.5 bg-blue-950 text-blue-400 rounded border border-blue-800">PATRONEN</span>
                             <span class="text-3xl">🎯</span>
                         </div>
                         <h3 class="font-bold text-base text-white group-hover:text-blue-400 transition">🎯 Patroon Jager</h3>
-                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Herken specifieke candlesticks en maak winst op patronen voor extra bonus XP!</p>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Herken specifieke candlesticks voor extra bonus XP!</p>
                     </div>
-                    <span class="mt-4 text-xs font-bold text-blue-400 flex items-center gap-1">Start Modus <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                    <span class="mt-4 text-xs font-bold text-blue-400 flex items-center gap-1">Start 5-min Sessie <i class="fa-solid fa-play text-[10px]"></i></span>
                 </button>
 
             </div>
@@ -146,7 +143,7 @@
                 </div>
                 <div>
                     <h1 class="arcade-text text-xs md:text-sm text-white flex items-center gap-2">
-                        Beurs Tycoon <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-sans">v2.0</span>
+                        Beurs Tycoon <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-sans">v2.1</span>
                     </h1>
                     <p class="text-xs text-brand-400 font-bold uppercase tracking-wider mt-0.5">
                         Level: <span id="playerLevelDisplay">1 (Beginner)</span>
@@ -161,14 +158,21 @@
                     <p class="text-[10px] text-slate-400 uppercase font-bold">Kapitaal</p>
                     <p id="playerCash" class="font-mono font-bold text-emerald-400 text-base md:text-lg">$ 100.00</p>
                 </div>
+                
+                <div class="h-8 w-px bg-slate-800"></div>
 
-                <!-- Debt (Shown when active) -->
+                <!-- Debt -->
                 <div class="text-center hidden sm:block" id="debtHeaderBox">
-                    <div class="h-8 w-px bg-slate-800 inline-block mr-3 sm:mr-6 align-middle"></div>
-                    <div class="inline-block align-middle">
-                        <p class="text-[10px] text-rose-400 uppercase font-bold">Resterende Schuld</p>
-                        <p id="playerDebt" class="font-mono font-bold text-rose-400 text-base md:text-lg">$ 0.00</p>
-                    </div>
+                    <p class="text-[10px] text-rose-400 uppercase font-bold">Resterende Schuld</p>
+                    <p id="playerDebt" class="font-mono font-bold text-rose-400 text-base md:text-lg">$ 0.00</p>
+                </div>
+
+                <div class="h-8 w-px bg-slate-800 hidden sm:block"></div>
+
+                <!-- 5-Minute Timer (BEHOUDEN) -->
+                <div class="text-center">
+                    <p class="text-[10px] text-slate-400 uppercase font-bold">Sessie Tijd</p>
+                    <p id="sessionTimer" class="font-mono font-bold text-amber-400 text-base md:text-lg">05:00</p>
                 </div>
 
                 <div class="h-8 w-px bg-slate-800"></div>
@@ -180,11 +184,8 @@
                 </div>
             </div>
 
-            <!-- Quick Action Buttons -->
+            <!-- Action Buttons -->
             <div class="flex items-center gap-2">
-                <button onclick="openModeSelectModal()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-brand-300 rounded-xl border border-brand-500/30 text-xs font-bold transition flex items-center gap-2 shadow-sm">
-                    <i class="fa-solid fa-gamepad"></i> <span class="hidden md:inline">Wissel Modus</span>
-                </button>
                 <button onclick="openDagboek()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-xl border border-amber-500/30 text-xs font-bold transition flex items-center gap-2 shadow-sm">
                     <i class="fa-solid fa-book-open"></i> <span class="hidden md:inline">Dagboek</span>
                 </button>
@@ -198,115 +199,72 @@
 
     <main class="flex-grow p-4 max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 relative">
         
-        <!-- LEFT COLUMN: Mode Selection & Pattern Tips (4 Cols) -->
+        <!-- LEFT COLUMN: Active Session Info & Pattern Overview (4 Cols) -->
         <div class="lg:col-span-4 space-y-4">
             
-            <div class="flex justify-between items-center">
-                <h2 class="font-bold text-slate-400 uppercase tracking-wider text-xs flex items-center">
-                    <i class="fa-solid fa-gamepad mr-2 text-brand-400"></i> Kies een Spelmodus
-                </h2>
+            <div class="game-panel p-4 bg-slate-900 border border-slate-700">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Huidige Sessie Modus</span>
+                    <span id="currentModeTag" class="text-[10px] font-bold px-2 py-0.5 bg-emerald-950 text-emerald-400 rounded border border-emerald-800">Leermodus</span>
+                </div>
+                <h2 id="currentModeTitle" class="text-base font-bold text-white">🎓 Klassiek & Oefenen</h2>
+                <p id="currentModeDesc" class="text-xs text-slate-400 mt-1">Rustig tempo. Leer kaarsen en patronen herkennen.</p>
             </div>
 
-            <!-- Mode 1: Classic Tutorial -->
-            <button onclick="switchMode('classic')" id="mode-btn-classic" class="w-full text-left game-panel p-3.5 transition border-l-4 border-emerald-500 bg-slate-800/90 hover:bg-slate-800 relative group">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-950 text-emerald-400 rounded border border-emerald-800">LEERMODUS</span>
-                        <h3 class="font-bold text-sm text-white mt-1">🎓 Klassiek & Oefenen</h3>
-                        <p class="text-xs text-slate-400 mt-0.5">Rustig tempo. Leer kaarsen en patronen herkennen.</p>
-                    </div>
-                    <span class="text-2xl">🌱</span>
-                </div>
-            </button>
-
-            <!-- Mode 2: Newsflash -->
-            <button onclick="switchMode('newsflash')" id="mode-btn-newsflash" class="w-full text-left game-panel p-3.5 transition border-l-4 border-amber-500 bg-slate-900 hover:bg-slate-800 relative group">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <span class="text-[10px] font-bold px-2 py-0.5 bg-amber-950 text-amber-400 rounded border border-amber-800">NIEUWS</span>
-                        <h3 class="font-bold text-sm text-white mt-1">📰 Newsflash Modus</h3>
-                        <p class="text-xs text-slate-400 mt-0.5">Brekend wereldnieuws beïnvloedt direct de markt!</p>
-                    </div>
-                    <span class="text-2xl">⚡</span>
-                </div>
-            </button>
-
-            <!-- Mode 3: Debt Payment -->
-            <button onclick="switchMode('debt')" id="mode-btn-debt" class="w-full text-left game-panel p-3.5 transition border-l-4 border-rose-500 bg-slate-900 hover:bg-slate-800 relative group">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <span class="text-[10px] font-bold px-2 py-0.5 bg-rose-950 text-rose-400 rounded border border-rose-800">UITDAGING</span>
-                        <h3 class="font-bold text-sm text-white mt-1">💸 Schuld Afbetalen</h3>
-                        <p class="text-xs text-slate-400 mt-0.5">Start met $100 & $500 schuld. Los je schuld af!</p>
-                    </div>
-                    <span class="text-2xl">🏦</span>
-                </div>
-            </button>
-
-            <!-- Mode 4: Chaos Mode -->
-            <button onclick="switchMode('chaos')" id="mode-btn-chaos" class="w-full text-left game-panel p-3.5 transition border-l-4 border-purple-500 bg-slate-900 hover:bg-slate-800 relative group">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <span class="text-[10px] font-bold px-2 py-0.5 bg-purple-950 text-purple-400 rounded border border-purple-800">HIGH RISK</span>
-                        <h3 class="font-bold text-sm text-white mt-1">🌀 Chaos Modus</h3>
-                        <p class="text-xs text-slate-400 mt-0.5">Extreem snelle, onvoorspelbare en volatiele koersen.</p>
-                    </div>
-                    <span class="text-2xl">🔥</span>
-                </div>
-            </button>
-
-            <!-- Mode 5: Pattern Hunter -->
-            <button onclick="switchMode('pattern')" id="mode-btn-pattern" class="w-full text-left game-panel p-3.5 transition border-l-4 border-blue-500 bg-slate-900 hover:bg-slate-800 relative group">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <span class="text-[10px] font-bold px-2 py-0.5 bg-blue-950 text-blue-400 rounded border border-blue-800">PATRONEN</span>
-                        <h3 class="font-bold text-sm text-white mt-1">🎯 Patroon Jager</h3>
-                        <p class="text-xs text-slate-400 mt-0.5">Herken specifieke candlesticks voor extra bonus XP!</p>
-                    </div>
-                    <span class="text-2xl">🔍</span>
-                </div>
-            </button>
-
-            <!-- Live Active Pattern Card (Educational Feedback) -->
-            <div class="game-panel p-4 bg-slate-900/90 border border-slate-700/80 rounded-2xl">
-                <div class="flex items-center justify-between mb-2">
+            <!-- VERBETERPUNT 5: Duidelijkheid Patronen Overzicht -->
+            <div class="game-panel p-4 bg-slate-900/90 border border-slate-700 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between">
                     <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
-                        <i class="fa-solid fa-eye"></i> Actief Patroon Signaal
+                        <i class="fa-solid fa-magnifying-glass-chart"></i> Beschikbare Patronen
                     </h3>
-                    <span id="patternBadge" class="text-[10px] font-bold px-2 py-0.5 bg-slate-800 text-slate-400 rounded">Geen</span>
+                    <span id="patternBadge" class="text-[10px] font-bold px-2 py-0.5 bg-slate-800 text-slate-400 rounded">Scannen...</span>
                 </div>
-                <div id="patternCardContent" class="text-xs text-slate-300 space-y-1">
-                    <p class="italic text-slate-400">Scan de kaarsen... Zodra er een bekend patroon (zoals een Hammer of Engulfing) ontstaat, verschijnt hier een uitleg.</p>
+
+                <p class="text-[11px] text-slate-400">
+                    Het systeem herkent automatisch de volgende patronen op de grafiek:
+                </p>
+
+                <div class="grid grid-cols-2 gap-2 text-[11px]">
+                    <div class="p-2 bg-slate-950 rounded-lg border border-emerald-900/60">
+                        <span class="text-emerald-400 font-bold block">🔨 Hammer</span>
+                        <span class="text-slate-400 text-[10px]">Signaleert stijging</span>
+                    </div>
+                    <div class="p-2 bg-slate-950 rounded-lg border border-rose-900/60">
+                        <span class="text-rose-400 font-bold block">⭐ Shooting Star</span>
+                        <span class="text-slate-400 text-[10px]">Signaleert daling</span>
+                    </div>
+                    <div class="p-2 bg-slate-950 rounded-lg border border-emerald-900/60">
+                        <span class="text-emerald-400 font-bold block">🟢 Bullish Engulfing</span>
+                        <span class="text-slate-400 text-[10px]">Kopers nemen over</span>
+                    </div>
+                    <div class="p-2 bg-slate-950 rounded-lg border border-rose-900/60">
+                        <span class="text-rose-400 font-bold block">🔴 Bearish Engulfing</span>
+                        <span class="text-slate-400 text-[10px]">Verkopers nemen over</span>
+                    </div>
                 </div>
-                <button onclick="openDagboek()" class="mt-3 w-full py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-amber-300 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-book"></i> Open Candlestick Dagboek
+
+                <div id="patternCardContent" class="text-xs text-slate-300 p-2 bg-slate-950 rounded-xl border border-slate-800 italic">
+                    Wacht op volgend patroon in de koers...
+                </div>
+
+                <button onclick="openDagboek()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-amber-300 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-book"></i> Bekijk Candlestick Gids
                 </button>
             </div>
 
         </div>
 
-        <!-- RIGHT COLUMN: Chart & Trading Panel (8 Cols) -->
+        <!-- RIGHT COLUMN: Chart & Multi-Position Trading Panel (8 Cols) -->
         <div class="lg:col-span-8 flex flex-col gap-4">
             
-            <!-- Asset Context & Live Alert Bar -->
-            <div class="game-panel p-4 flex flex-wrap justify-between items-center gap-3">
-                <div>
-                    <div class="flex items-center gap-2">
-                        <h2 id="currentModeTitle" class="text-lg font-bold text-white">Klassieke Leermodus</h2>
-                        <span id="currentModeTag" class="text-[10px] font-bold px-2 py-0.5 bg-emerald-950 text-emerald-400 rounded border border-emerald-800">Normaal Tempo</span>
-                    </div>
-                    <p id="currentModeDesc" class="text-xs text-slate-400 mt-0.5">Observeer de kaarsen en maak winstgevende beslissingen.</p>
-                </div>
-
-                <!-- Live News / Event Alert -->
-                <div id="newsAlertBox" class="bg-amber-950/80 border border-amber-500 text-amber-200 px-3 py-1.5 rounded-xl text-xs font-bold shadow-lg flex items-center gap-2 hidden animate-pulse max-w-md">
-                    <i class="fa-solid fa-newspaper text-amber-400"></i>
-                    <span id="newsAlertText">Nieuwsbericht laadt...</span>
-                </div>
+            <!-- Live Alert Bar -->
+            <div id="newsAlertBox" class="bg-amber-950/80 border border-amber-500 text-amber-200 px-4 py-2 rounded-xl text-xs font-bold shadow-lg flex items-center gap-2 hidden animate-pulse">
+                <i class="fa-solid fa-newspaper text-amber-400"></i>
+                <span id="newsAlertText">Nieuwsbericht laadt...</span>
             </div>
 
             <!-- Candlestick Chart Area -->
-            <div class="game-panel p-4 relative h-72 md:h-96 flex flex-col">
+            <div class="game-panel p-4 relative h-72 md:h-80 flex flex-col">
                 <div class="flex justify-between items-center mb-2 z-10">
                     <div class="flex items-center gap-3">
                         <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Live Candlestick Koers</span>
@@ -325,87 +283,76 @@
                     <canvas id="gameChart"></canvas>
                 </div>
 
-                <!-- Chart Legend / Helper -->
+                <!-- Chart Legend -->
                 <div class="mt-2 flex justify-between items-center text-[10px] text-slate-400 font-mono">
-                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-emerald-500 inline-block rounded-sm"></span> Groen = Stijging (Bullish)</span>
-                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-rose-500 inline-block rounded-sm"></span> Rood = Daling (Bearish)</span>
-                    <span class="hidden sm:inline">Lijnen (Wicks) = Hoogste / Laagste punt</span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-emerald-500 inline-block rounded-sm"></span> Groen = Kopen / Stijging</span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-rose-500 inline-block rounded-sm"></span> Rood = Verkopen / Daling</span>
                 </div>
             </div>
 
-            <!-- Trading Controls Panel -->
-            <div class="game-panel p-5">
+            <!-- VERBETERPUNT 3: Trading Controls & Meerdere Aankopen (Multi-Position Support) -->
+            <div class="game-panel p-5 space-y-4">
                 
-                <!-- Active Position View (When trade is open) -->
-                <div id="activePositionPanel" class="hidden bg-slate-900 border-2 border-brand-500/80 rounded-2xl p-4 mb-4 shadow-xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Actieve Positie</span>
-                            <p class="text-base font-bold text-white mt-0.5 flex items-center gap-2">
-                                <span id="posTypeIcon"></span> 
-                                <span id="posAmount">$ 20.00</span> op 
-                                <span id="posType" class="uppercase tracking-wider">Stijging</span>
-                            </p>
-                            <p class="text-xs text-slate-400 mt-1">Ingestapt op: <span id="posEntry" class="font-mono font-bold text-white">$ 50.00</span></p>
-                        </div>
-                        <div class="text-right">
-                            <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Live Winst / Verlies</span>
-                            <p id="posProfit" class="font-mono text-2xl font-bold text-emerald-400">$ +0.00</p>
-                            <p id="posProfitPercent" class="font-mono text-xs text-emerald-400 font-bold">(+0.00%)</p>
-                        </div>
+                <!-- Input Controls -->
+                <div>
+                    <div class="flex justify-between items-center text-xs mb-2">
+                        <span class="text-slate-300 font-bold flex items-center gap-1.5">
+                            <i class="fa-solid fa-coins text-amber-400"></i> Inzetbedrag per Order
+                        </span>
+                        <span id="betAmountDisplay" class="font-mono font-bold text-amber-400 text-sm">$ 20.00</span>
                     </div>
-                    <button onclick="closePosition()" class="w-full mt-4 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition uppercase text-xs tracking-wider shadow-lg shadow-brand-600/30">
-                        <i class="fa-solid fa-hand-holding-dollar mr-2"></i> Positie Sluiten & Winst/Verlies Pakken
+                    
+                    <input type="range" id="betSlider" min="10" max="100" step="5" value="20" oninput="updateBetDisplay()">
+                    
+                    <div class="flex justify-between items-center text-[10px] text-slate-500 mt-1.5 font-mono">
+                        <span>Min: $10</span>
+                        <div class="flex gap-1.5">
+                            <button onclick="setBetPercent(0.25)" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded font-sans">25%</button>
+                            <button onclick="setBetPercent(0.50)" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded font-sans">50%</button>
+                            <button onclick="setBetPercent(1.00)" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded font-sans">MAX</button>
+                        </div>
+                        <span>Max: <span id="maxBetDisplay">$100</span></span>
+                    </div>
+                </div>
+
+                <!-- Order Action Buttons (Groen = Kopen, Rood = Verkopen) -->
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="openPosition('long')" class="relative group overflow-hidden p-3.5 bg-emerald-950/40 border-2 border-emerald-600/80 hover:bg-emerald-600/20 hover:border-emerald-500 rounded-2xl transition flex flex-col items-center justify-center gap-1 shadow-lg">
+                        <i class="fa-solid fa-arrow-trend-up text-emerald-400 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-bold text-emerald-400 group-hover:text-white uppercase tracking-wider text-xs md:text-sm">KOPEN (GROEN)</span>
+                        <span class="text-[10px] text-emerald-500 group-hover:text-emerald-300">Winst bij stijgende koers</span>
+                    </button>
+                    
+                    <button onclick="openPosition('short')" class="relative group overflow-hidden p-3.5 bg-rose-950/40 border-2 border-rose-600/80 hover:bg-rose-600/20 hover:border-rose-500 rounded-2xl transition flex flex-col items-center justify-center gap-1 shadow-lg">
+                        <i class="fa-solid fa-arrow-trend-down text-rose-400 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-bold text-rose-400 group-hover:text-white uppercase tracking-wider text-xs md:text-sm">VERKOPEN (ROOD)</span>
+                        <span class="text-[10px] text-rose-500 group-hover:text-rose-300">Winst bij dalende koers</span>
                     </button>
                 </div>
 
-                <!-- Input Controls (When no trade open) -->
-                <div id="tradingControls">
-                    
-                    <!-- Bet Slider & Quick Presets -->
-                    <div class="mb-5">
-                        <div class="flex justify-between items-center text-xs mb-2">
-                            <span class="text-slate-300 font-bold flex items-center gap-1.5">
-                                <i class="fa-solid fa-coins text-amber-400"></i> Inzetbedrag per Trade
-                            </span>
-                            <span id="betAmountDisplay" class="font-mono font-bold text-amber-400 text-sm">$ 20.00</span>
-                        </div>
-                        
-                        <input type="range" id="betSlider" min="10" max="100" step="5" value="20" oninput="updateBetDisplay()">
-                        
-                        <div class="flex justify-between items-center text-[10px] text-slate-500 mt-1.5 font-mono">
-                            <span>Min: $10</span>
-                            <div class="flex gap-1.5">
-                                <button onclick="setBetPercent(0.25)" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded font-sans">25%</button>
-                                <button onclick="setBetPercent(0.50)" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded font-sans">50%</button>
-                                <button onclick="setBetPercent(1.00)" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded font-sans">MAX</button>
-                            </div>
-                            <span>Max: <span id="maxBetDisplay">$100</span></span>
-                        </div>
-                    </div>
+                <!-- Debt Payment Container -->
+                <div id="payDebtContainer" class="hidden">
+                    <button onclick="payOffDebt()" class="w-full py-2.5 bg-rose-700 hover:bg-rose-600 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition border border-rose-400 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-building-columns"></i> Betaal $100 Schuld Af
+                    </button>
+                </div>
 
-                    <!-- Action Buttons: LONG vs SHORT -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <button onclick="openPosition('long')" class="relative group overflow-hidden p-4 bg-emerald-950/40 border-2 border-emerald-600/80 hover:bg-emerald-600/20 hover:border-emerald-500 rounded-2xl transition flex flex-col items-center justify-center gap-1 shadow-lg">
-                            <i class="fa-solid fa-arrow-trend-up text-emerald-400 text-2xl group-hover:scale-110 transition"></i>
-                            <span class="font-bold text-emerald-400 group-hover:text-white uppercase tracking-wider text-xs md:text-sm">KOOP (STIJGING)</span>
-                            <span class="text-[10px] text-emerald-500 group-hover:text-emerald-300">Winst als de koers OMHOOG gaat</span>
-                        </button>
-                        
-                        <button onclick="openPosition('short')" class="relative group overflow-hidden p-4 bg-rose-950/40 border-2 border-rose-600/80 hover:bg-rose-600/20 hover:border-rose-500 rounded-2xl transition flex flex-col items-center justify-center gap-1 shadow-lg">
-                            <i class="fa-solid fa-arrow-trend-down text-rose-400 text-2xl group-hover:scale-110 transition"></i>
-                            <span class="font-bold text-rose-400 group-hover:text-white uppercase tracking-wider text-xs md:text-sm">VERKOOP (DALING)</span>
-                            <span class="text-[10px] text-rose-500 group-hover:text-rose-300">Winst als de koers OMLAAG gaat</span>
+                <!-- Active Positions List (Meerdere gelijktijdige aankopen) -->
+                <div class="border-t border-slate-800 pt-3">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-slate-300 uppercase tracking-wider">
+                            <i class="fa-solid fa-layer-group text-brand-400 mr-1"></i> Openstaande Posities (<span id="openPosCount">0</span>)
+                        </span>
+                        <button onclick="closeAllPositions()" id="closeAllBtn" class="hidden text-[10px] font-bold text-rose-400 hover:text-rose-300 underline">
+                            Sluit Alle Posities
                         </button>
                     </div>
 
-                    <!-- Special Debt Payment Trigger Button (Only in Debt Mode) -->
-                    <div id="payDebtContainer" class="mt-4 hidden">
-                        <button onclick="payOffDebt()" class="w-full py-3 bg-rose-700 hover:bg-rose-600 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition border border-rose-400 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-building-columns"></i> Betaal $100 Schuld Af
-                        </button>
+                    <div id="positionsList" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                        <p id="noPositionsText" class="text-xs text-slate-500 italic text-center py-2">
+                            Nog geen openstaande aankopen. Klik op Kopen of Verkopen om een positie te openen.
+                        </p>
                     </div>
-
                 </div>
 
             </div>
@@ -414,7 +361,7 @@
 
     </main>
 
-    <!-- Mini Feedback Toast Notification -->
+    <!-- Mini Feedback Toast -->
     <div id="feedbackToast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-slate-900 border-2 border-brand-500 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transition-all duration-300 translate-y-28 opacity-0 z-50">
         <span class="text-2xl" id="toastEmoji">🎯</span>
         <div>
@@ -423,7 +370,7 @@
         </div>
     </div>
 
-    <!-- MODAL 1: Full Step-by-Step Interactive Tutorial -->
+    <!-- VERBETERPUNT 4: TUTORIAL MODAL MET SLIDER NAVIGATIE -->
     <div id="tutorialModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
         <div class="bg-slate-900 border-4 border-brand-500 rounded-3xl max-w-xl w-full p-6 md:p-8 shadow-2xl space-y-6 relative">
             
@@ -435,18 +382,18 @@
                 <span id="tutStepBadge" class="text-xs font-bold bg-brand-900/60 text-brand-300 border border-brand-700 px-3 py-1 rounded-full">Stap 1 van 4</span>
             </div>
 
-            <!-- Step Contents -->
+            <!-- Tutorial Step Contents -->
             <div id="tutStep1" class="space-y-4">
                 <h3 class="text-lg font-bold text-amber-400">Welkom bij Beurs Tycoon!</h3>
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    In deze game leer je hoe échte handelaren op de beurs beslissingen maken. Oefen op je eigen tempo met het laten groeien van je kapitaal.
+                    In deze game leer je hoe échte handelaren op de beurs beslissingen maken. Je speelt in <strong>sessies van 5 minuten</strong> om je kapitaal maximaal te laten groeien.
                 </p>
                 <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-xs">
                     <p class="font-bold text-brand-400"><i class="fa-solid fa-bullseye mr-1"></i> Jouw Doel:</p>
                     <ul class="list-disc list-inside text-slate-300 space-y-1">
                         <li>Start met <strong>$100</strong> kapitaal.</li>
-                        <li>Voorspel koersbewegingen (stijging of daling).</li>
-                        <li>Ontdek patronen op de grafiek om je kansen te vergroten.</li>
+                        <li>Open meerdere posities tegelijk (Kopen/Verkopen).</li>
+                        <li>Gebruik patroonsignalen op de grafiek om winst te maken.</li>
                     </ul>
                 </div>
             </div>
@@ -459,45 +406,55 @@
                 <div class="grid grid-cols-2 gap-3 bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs">
                     <div class="border-r border-slate-800 pr-2">
                         <span class="font-bold text-emerald-400 block text-sm mb-1">🟢 Groene Kaars</span>
-                        <p class="text-slate-300">De prijs is <strong>gestegen</strong>. De sluitingsprijs lag hoger dan de openingsprijs.</p>
+                        <p class="text-slate-300">De prijs is <strong>gestegen</strong>. Sluitingsprijs lag hoger dan opening.</p>
                     </div>
                     <div class="pl-2">
                         <span class="font-bold text-rose-400 block text-sm mb-1">🔴 Rode Kaars</span>
-                        <p class="text-slate-300">De prijs is <strong>gedaald</strong>. De sluitingsprijs lag lager dan de openingsprijs.</p>
+                        <p class="text-slate-300">De prijs is <strong>gedaald</strong>. Sluitingsprijs lag lager dan opening.</p>
                     </div>
                 </div>
-                <p class="text-xs text-slate-400">De dunne sprieten boven en onder (wicks) laten het hoogste en laagste punt zien.</p>
             </div>
 
             <div id="tutStep3" class="space-y-4 hidden">
-                <h3 class="text-lg font-bold text-amber-400">Stijging (Long) vs Daling (Short)</h3>
+                <h3 class="text-lg font-bold text-amber-400">Kopen (Groen) vs Verkopen (Rood)</h3>
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    Op de beurs kun je op 2 manieren winst maken:
+                    Je kunt meerdere aankopen tegelijk opengesteld houden:
                 </p>
                 <div class="space-y-2 text-xs">
                     <div class="p-3 bg-emerald-950/60 border border-emerald-600/60 rounded-xl">
-                        <strong class="text-emerald-400 uppercase">1. Koop (Stijging / Long):</strong>
-                        <p class="text-slate-300">Je verwacht dat de koers omhoog gaat. Gaat hij omhoog? Dan maak je winst!</p>
+                        <strong class="text-emerald-400 uppercase">🟢 KOPEN (Long):</strong>
+                        <p class="text-slate-300">Winst zodra de koers stijgt boven je instapprijs.</p>
                     </div>
                     <div class="p-3 bg-rose-950/60 border border-rose-600/60 rounded-xl">
-                        <strong class="text-rose-400 uppercase">2. Verkoop (Daling / Short):</strong>
-                        <p class="text-slate-300">Je verwacht dat de koers zakt. Zakt de koers daadwerkelijk? Dan verdien je geld aan de daling!</p>
+                        <strong class="text-rose-400 uppercase">🔴 VERKOPEN (Short):</strong>
+                        <p class="text-slate-300">Winst zodra de koers zakt onder je instapprijs.</p>
                     </div>
                 </div>
             </div>
 
             <div id="tutStep4" class="space-y-4 hidden">
-                <h3 class="text-lg font-bold text-amber-400">Patronen & Risicobeheer</h3>
+                <h3 class="text-lg font-bold text-amber-400">Patronen Herkennen</h3>
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    Handelaren kijken naar herkenbare patronen (zoals de <strong>Hammer</strong> of <strong>Engulfing</strong>) die verraden wat de koers waarschijnlijk gaat doen.
+                    Let goed op het patroonsignaal onder de koers! Patronen zoals de <strong>Hammer</strong> of <strong>Engulfing</strong> geven extra bonus XP bij winst.
                 </p>
                 <div class="bg-amber-950/50 border border-amber-500/50 p-3.5 rounded-xl text-xs text-amber-200">
-                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> <strong>Gouden Regel:</strong> Zet nooit al je geld in op één trade! Gebruik de inzet-slider om slim te spreiden (bijvoorbeeld 20% per keer).
+                    <i class="fa-solid fa-lightbulb mr-1"></i> Tip: Gebruik de slider hieronder om snel door de tutorial lessen te navigeren!
                 </div>
             </div>
 
+            <!-- VERBETERPUNT 4: Interactive Slider Control -->
+            <div class="space-y-2 pt-2 border-t border-slate-800">
+                <div class="flex justify-between text-[10px] text-slate-400 font-mono">
+                    <span>Intro</span>
+                    <span>Kaarsen</span>
+                    <span>Order Types</span>
+                    <span>Patronen</span>
+                </div>
+                <input type="range" id="tutRangeSlider" min="1" max="4" value="1" step="1" oninput="onTutSliderChange(this.value)">
+            </div>
+
             <!-- Navigation Buttons -->
-            <div class="flex justify-between items-center pt-2">
+            <div class="flex justify-between items-center">
                 <button id="tutPrevBtn" onclick="changeTutStep(-1)" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-bold transition opacity-50 cursor-not-allowed" disabled>
                     <i class="fa-solid fa-arrow-left mr-1"></i> Vorige
                 </button>
@@ -509,7 +466,7 @@
         </div>
     </div>
 
-    <!-- MODAL 2: Candlestick Pattern Dagboek (Educational Handbook) -->
+    <!-- MODAL 2: Candlestick Pattern Dagboek -->
     <div id="dagboekModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
         <div class="bg-slate-900 border-4 border-amber-500 rounded-3xl max-w-2xl w-full p-6 shadow-2xl max-h-[90vh] flex flex-col">
             
@@ -518,7 +475,7 @@
                     <span class="text-2xl">📖</span>
                     <div>
                         <h2 class="arcade-text text-sm text-amber-400">Candlestick Dagboek</h2>
-                        <p class="text-xs text-slate-400">Patronen die groei of daling voorspellen</p>
+                        <p class="text-xs text-slate-400">Overzicht van alle herkenbare patronen</p>
                     </div>
                 </div>
                 <button onclick="closeDagboek()" class="p-2 text-slate-400 hover:text-white text-lg">
@@ -528,7 +485,6 @@
 
             <div class="overflow-y-auto space-y-4 pr-1 text-xs">
                 
-                <!-- Pattern 1: Hammer -->
                 <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex gap-4 items-start">
                     <div class="w-16 h-20 bg-slate-900 rounded-xl border border-slate-700 flex flex-col items-center justify-center relative flex-shrink-0">
                         <div class="w-0.5 h-14 bg-slate-400 absolute"></div>
@@ -537,14 +493,13 @@
                     <div class="space-y-1">
                         <div class="flex items-center justify-between">
                             <h3 class="font-bold text-sm text-emerald-400">1. De Hamer (Hammer)</h3>
-                            <span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 text-[10px] font-bold rounded border border-emerald-800">STIJGING (Bullish)</span>
+                            <span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 text-[10px] font-bold rounded border border-emerald-800">STIJGING</span>
                         </div>
-                        <p class="text-slate-300">Een klein kaarslichaam aan de bovenkant met een hele lange steel (wick) aan de onderkant.</p>
-                        <p class="text-slate-400 italic">Betekenis: Verkopers probeerden de prijs te drukken, maar kopers kwamen krachtig terug. Signaleert vaak het einde van een daling!</p>
+                        <p class="text-slate-300">Klein lichaam bovenaan met een hele lange steel onderaan.</p>
+                        <p class="text-slate-400 italic">Betekenis: Verkopers werden teruggeduwd door sterke kopers.</p>
                     </div>
                 </div>
 
-                <!-- Pattern 2: Shooting Star -->
                 <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex gap-4 items-start">
                     <div class="w-16 h-20 bg-slate-900 rounded-xl border border-slate-700 flex flex-col items-center justify-center relative flex-shrink-0">
                         <div class="w-0.5 h-14 bg-slate-400 absolute"></div>
@@ -553,14 +508,13 @@
                     <div class="space-y-1">
                         <div class="flex items-center justify-between">
                             <h3 class="font-bold text-sm text-rose-400">2. Vallende Ster (Shooting Star)</h3>
-                            <span class="px-2 py-0.5 bg-rose-950 text-rose-400 text-[10px] font-bold rounded border border-rose-800">DALING (Bearish)</span>
+                            <span class="px-2 py-0.5 bg-rose-950 text-rose-400 text-[10px] font-bold rounded border border-rose-800">DALING</span>
                         </div>
-                        <p class="text-slate-300">Een klein kaarslichaam aan de onderkant met een hele lange steel aan de bovenkant.</p>
-                        <p class="text-slate-400 italic">Betekenis: Kopers pusheden de prijs omhoog, maar worden afgewezen door verkopers. Signaleert een mogelijke daling.</p>
+                        <p class="text-slate-300">Klein lichaam onderaan met lange steel bovenaan.</p>
+                        <p class="text-slate-400 italic">Betekenis: Kopers werden afgewezen door verkopers.</p>
                     </div>
                 </div>
 
-                <!-- Pattern 3: Bullish Engulfing -->
                 <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex gap-4 items-start">
                     <div class="w-16 h-20 bg-slate-900 rounded-xl border border-slate-700 flex items-center justify-center gap-1 relative flex-shrink-0">
                         <div class="w-3 h-5 bg-rose-500 rounded-sm"></div>
@@ -568,50 +522,56 @@
                     </div>
                     <div class="space-y-1">
                         <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-sm text-emerald-400">3. Opslokking (Bullish Engulfing)</h3>
-                            <span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 text-[10px] font-bold rounded border border-emerald-800">STIJGING (Bullish)</span>
+                            <h3 class="font-bold text-sm text-emerald-400">3. Bullish Engulfing</h3>
+                            <span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 text-[10px] font-bold rounded border border-emerald-800">STIJGING</span>
                         </div>
-                        <p class="text-slate-300">Een kleine rode kaars die direct gevolgd wordt door een veel grotere groene kaars die de rode volledig 'opslokt'.</p>
-                        <p class="text-slate-400 italic">Betekenis: De kopers hebben de controle volledig overgenomen van de verkopers.</p>
-                    </div>
-                </div>
-
-                <!-- Pattern 4: Bearish Engulfing -->
-                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex gap-4 items-start">
-                    <div class="w-16 h-20 bg-slate-900 rounded-xl border border-slate-700 flex items-center justify-center gap-1 relative flex-shrink-0">
-                        <div class="w-3 h-5 bg-emerald-500 rounded-sm"></div>
-                        <div class="w-4 h-12 bg-rose-500 rounded-sm"></div>
-                    </div>
-                    <div class="space-y-1">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-sm text-rose-400">4. Bearish Opslokking</h3>
-                            <span class="px-2 py-0.5 bg-rose-950 text-rose-400 text-[10px] font-bold rounded border border-rose-800">DALING (Bearish)</span>
-                        </div>
-                        <p class="text-slate-300">Een kleine groene kaars gevolgd door een grote rode kaars die het hele bereik van de vorige kaars bedekt.</p>
-                        <p class="text-slate-400 italic">Betekenis: Sterk signaal dat de prijs gaat zakken.</p>
-                    </div>
-                </div>
-
-                <!-- Pattern 5: Doji -->
-                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex gap-4 items-start">
-                    <div class="w-16 h-20 bg-slate-900 rounded-xl border border-slate-700 flex flex-col items-center justify-center relative flex-shrink-0">
-                        <div class="w-0.5 h-12 bg-slate-400 absolute"></div>
-                        <div class="w-5 h-0.5 bg-white absolute z-10"></div>
-                    </div>
-                    <div class="space-y-1">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-sm text-amber-400">5. Doji (Twijfel)</h3>
-                            <span class="px-2 py-0.5 bg-amber-950 text-amber-400 text-[10px] font-bold rounded border border-amber-800">OMMEKEER / TWIJFEL</span>
-                        </div>
-                        <p class="text-slate-300">Openings- en sluitingsprijs zijn vrijwel exact gelijk (lijkt op een plusteken +).</p>
-                        <p class="text-slate-400 italic">Betekenis: Kopers en verkopers houden elkaar in evenwicht. Mogelijke trendomkeer op komst!</p>
+                        <p class="text-slate-300">Kleine rode kaars gevolgd door een grote groene kaars die de rode opslokt.</p>
                     </div>
                 </div>
 
             </div>
 
             <button onclick="closeDagboek()" class="mt-4 w-full py-3 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition">
-                Sluit Dagboek & Ga Verder Spelen
+                Sluit Dagboek
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Session End Summary (5-Minute Timer Reached) -->
+    <div id="sessionSummaryModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border-4 border-brand-500 rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl text-center space-y-6">
+            <div class="text-5xl animate-bounce">🏆</div>
+            <div>
+                <h2 class="arcade-text text-base text-white">Sessie Afgelopen!</h2>
+                <p class="text-xs text-slate-400 mt-1">Hier zijn je resultaten van de 5-minuten sessie:</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 bg-slate-950 p-4 rounded-2xl border border-slate-800 text-left text-xs">
+                <div>
+                    <span class="text-slate-500 uppercase text-[10px] font-bold">Eindkapitaal</span>
+                    <p id="sumFinalCash" class="font-mono text-lg font-bold text-emerald-400">$ 100.00</p>
+                </div>
+                <div>
+                    <span class="text-slate-500 uppercase text-[10px] font-bold">Totale Winst/Verlies</span>
+                    <p id="sumProfit" class="font-mono text-lg font-bold text-white">$ 0.00</p>
+                </div>
+                <div>
+                    <span class="text-slate-500 uppercase text-[10px] font-bold">Aantal Trades</span>
+                    <p id="sumTrades" class="font-mono text-lg font-bold text-amber-400">0</p>
+                </div>
+                <div>
+                    <span class="text-slate-500 uppercase text-[10px] font-bold">Winrate</span>
+                    <p id="sumWinrate" class="font-mono text-lg font-bold text-brand-400">0%</p>
+                </div>
+            </div>
+
+            <div id="sumGradeBox" class="p-3 bg-brand-950/60 border border-brand-500/50 rounded-xl text-xs text-brand-300 font-bold">
+                Beoordeling: Leerling Handelaar 🎓
+            </div>
+
+            <!-- Knop brengt speler terug naar het startscherm om een nieuwe modus/sessie te kiezen -->
+            <button onclick="backToStartScreen()" class="w-full py-4 bg-brand-600 hover:bg-brand-500 text-white arcade-text text-xs rounded-xl transition transform hover:scale-105 border-b-4 border-brand-800">
+                KIES NIEUWE SESSIE <i class="fa-solid fa-rotate-right ml-2"></i>
             </button>
         </div>
     </div>
@@ -631,53 +591,56 @@
             winsCount: 0
         };
 
-        let currentMode = 'classic'; // classic, newsflash, debt, chaos, pattern
+        let currentMode = 'classic';
+        let sessionSeconds = 300; // 5-minuten sessie timer behouden (300 sec)
+        let timerInterval = null;
         let simInterval = null;
         let newsInterval = null;
 
         let chartData = [];
-        let activePos = null; // { type: 'long'|'short', amount: 20, entryPrice: 50.00 }
-        let currentPattern = null; // Detected pattern
-        let pendingNewsImpact = 0; // Directional push from news
+        let activePositions = []; // VERBETERPUNT 3: Array voor meerdere gelijktijdige aankopen!
+        let nextPositionId = 1;
+        let currentPattern = null;
+        let pendingNewsImpact = 0;
 
         const modesConfig = {
             'classic': {
-                name: 'Klassieke Leermodus',
-                tag: 'Normaal Tempo',
-                desc: 'Veilige omgeving om te oefenen met candlesticks en patronen.',
+                name: '🎓 Klassiek & Oefenen',
+                tag: 'Leermodus',
+                desc: 'Rustig tempo. Leer kaarsen en patronen herkennen.',
                 speed: 1500,
                 volatility: 0.8,
                 hasDebt: false
             },
             'newsflash': {
-                name: 'Newsflash Modus',
+                name: '📰 Newsflash Modus',
                 tag: 'Nieuws Gedreven',
-                desc: 'Brekend wereldnieuws laat de koers regelmatig flink stijgen of dalen!',
+                desc: 'Brekend wereldnieuws laat de koers flink bewegen!',
                 speed: 1200,
                 volatility: 1.2,
                 hasDebt: false
             },
             'debt': {
-                name: 'Schuld Afbetalen Modus',
+                name: '💸 Schuld Afbetalen',
                 tag: 'Uitdaging',
-                desc: 'Start met $100 cash en $500 schuld. Los je schuld af met je tradewinsten!',
+                desc: 'Start met $100 cash en $500 schuld. Los af binnen 5 minuten!',
                 speed: 1200,
                 volatility: 1.0,
                 hasDebt: true,
                 startDebt: 500.00
             },
             'chaos': {
-                name: 'Chaos Modus',
-                tag: 'Extreem Riskant',
-                desc: 'Zeer volatiele bewegingen en snelle markt-spikes. Pas goed op!',
+                name: '🌀 Chaos Modus',
+                tag: 'High Risk',
+                desc: 'Zeer volatiele bewegingen en snelle markt-spikes.',
                 speed: 600,
                 volatility: 3.5,
                 hasDebt: false
             },
             'pattern': {
-                name: 'Patroon Jager Modus',
+                name: '🎯 Patroon Jager',
                 tag: 'Extra XP',
-                desc: 'Identificeer bekende patronen. Maak winst op patronen voor dubbele XP!',
+                desc: 'Identificeer bekende patronen voor dubbele bonus XP!',
                 speed: 1200,
                 volatility: 1.1,
                 hasDebt: false
@@ -685,38 +648,108 @@
         };
 
         const newsItems = [
-            { text: "🚀 Techgigant kondigt AI-doorbraak aan! Koers stijgt verwacht.", impact: 2.5 },
+            { text: "🚀 Techgigant kondigt AI-doorbraak aan! Koers stijgt.", impact: 2.5 },
             { text: "📉 Olieprijzen crashen door wereldwijd overschot.", impact: -2.2 },
             { text: "🏛️ Centrale Bank verlaagt rente. Beurs reageert positief!", impact: 1.8 },
-            { text: "⚡ Fabriek van belangrijke chips opgeschort door stroomuitval.", impact: -2.0 },
-            { text: "📈 Kwartaalcijfers overtreffen alle verwachtingen van analisten!", impact: 2.2 }
+            { text: "⚡ Chipfabriek stilgelegd door stroomuitval.", impact: -2.0 }
         ];
 
         // ==========================================
-        // INITIALIZATION
+        // INITIALIZATION & SESSION CONTROL
         // ==========================================
         window.onload = () => {
             initChartData();
             updateUI();
             drawChart();
-            // Startscherm blijft open bij het inladen
+            // Startscherm blijft zichtbaar tot moduskeuze
         };
 
-        function openModeSelectModal() {
-            if (activePos) {
-                showToast("Actieve Trade", "Sluit eerst je huidige trade voordat je van modus wisselt.", "⚠️", true);
-                return;
+        function startSessionWithMode(modeKey) {
+            currentMode = modeKey;
+            const cfg = modesConfig[modeKey];
+
+            document.getElementById('currentModeTitle').innerText = cfg.name;
+            document.getElementById('currentModeTag').innerText = cfg.tag;
+            document.getElementById('currentModeDesc').innerText = cfg.desc;
+
+            // Reset player session stats
+            player.cash = 100.00;
+            player.initialCash = 100.00;
+            player.tradesCount = 0;
+            player.winsCount = 0;
+            sessionSeconds = 300;
+            activePositions = [];
+
+            if (cfg.hasDebt) {
+                player.debt = cfg.startDebt;
+            } else {
+                player.debt = 0.00;
             }
-            document.getElementById('modeSelectModal').classList.remove('hidden');
+
+            document.getElementById('startScreenModal').classList.add('hidden');
+            document.getElementById('sessionSummaryModal').classList.add('hidden');
+
+            initChartData();
+            updateUI();
+            renderPositionsList();
+            startSessionTimer();
+            startSimulation();
+
+            showToast("Sessie Gestart!", `Gestart met ${cfg.name} (5 min)`, "⏱️");
         }
 
-        function startGameWithMode(modeKey) {
-            document.getElementById('modeSelectModal').classList.add('hidden');
-            switchMode(modeKey);
+        function startSessionTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                sessionSeconds--;
+                
+                const mins = Math.floor(sessionSeconds / 60);
+                const secs = sessionSeconds % 60;
+                document.getElementById('sessionTimer').innerText = 
+                    `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+                if (sessionSeconds <= 0) {
+                    endSession();
+                }
+            }, 1000);
+        }
+
+        function endSession() {
+            clearInterval(timerInterval);
+            clearInterval(simInterval);
+            if (newsInterval) clearInterval(newsInterval);
+
+            // Auto close positions at end
+            closeAllPositions(true);
+
+            const totalProfit = player.cash - player.initialCash;
+            const winrate = player.tradesCount > 0 ? Math.round((player.winsCount / player.tradesCount) * 100) : 0;
+
+            document.getElementById('sumFinalCash').innerText = `$ ${player.cash.toFixed(2)}`;
+            
+            const profEl = document.getElementById('sumProfit');
+            profEl.innerText = `$ ${totalProfit >= 0 ? '+' : ''}${totalProfit.toFixed(2)}`;
+            profEl.className = totalProfit >= 0 ? 'font-mono text-lg font-bold text-emerald-400' : 'font-mono text-lg font-bold text-rose-400';
+
+            document.getElementById('sumTrades').innerText = player.tradesCount;
+            document.getElementById('sumWinrate').innerText = `${winrate}%`;
+
+            let grade = "Leerling Handelaar 🎓";
+            if (totalProfit > 100) grade = "Meester Belegger 🚀";
+            else if (totalProfit > 20) grade = "Winstgevende Trader 📈";
+            else if (totalProfit < 0) grade = "Risico-Zoeker ⚠️";
+
+            document.getElementById('sumGradeBox').innerText = `Beoordeling: ${grade}`;
+            document.getElementById('sessionSummaryModal').classList.remove('hidden');
+        }
+
+        function backToStartScreen() {
+            document.getElementById('sessionSummaryModal').classList.add('hidden');
+            document.getElementById('startScreenModal').classList.remove('hidden');
         }
 
         // ==========================================
-        // SIMULATION & CANDLESTICK ENGINE
+        // SIMULATION ENGINE
         // ==========================================
         function initChartData() {
             chartData = [];
@@ -750,13 +783,11 @@
             let lastCandle = chartData[chartData.length - 1];
             let open = lastCandle.close;
 
-            // Calculate movement
             let baseMove = (Math.random() - 0.49) * cfg.volatility;
 
-            // Apply news momentum if active
             if (pendingNewsImpact !== 0) {
                 baseMove += pendingNewsImpact;
-                pendingNewsImpact *= 0.6; // decay
+                pendingNewsImpact *= 0.6;
                 if (Math.abs(pendingNewsImpact) < 0.1) pendingNewsImpact = 0;
             }
 
@@ -766,14 +797,13 @@
 
             let newCandle = { open, close, high, low, pattern: null };
 
-            // Analyze Pattern for new candle
             analyzePatterns(newCandle);
 
             chartData.push(newCandle);
             if(chartData.length > 35) chartData.shift();
 
             updatePriceDisplay(close);
-            updateActivePosition();
+            updateAllActivePositions();
             drawChart();
         }
 
@@ -796,7 +826,7 @@
         }
 
         // ==========================================
-        // CANDLESTICK PATTERN RECOGNITION
+        // PATTERN RECOGNITION (VERBETERPUNT 5)
         // ==========================================
         function analyzePatterns(candle) {
             const body = Math.abs(candle.close - candle.open);
@@ -806,34 +836,22 @@
 
             currentPattern = null;
 
-            // 1. Hammer (Long lower wick, small body at top)
             if (lowerWick > body * 2 && upperWick < body * 0.5 && range > 0.3) {
                 candle.pattern = { name: "Hammer", type: "bullish", icon: "🔨" };
                 currentPattern = candle.pattern;
-            }
-            // 2. Shooting Star (Long upper wick, small body at bottom)
-            else if (upperWick > body * 2 && lowerWick < body * 0.5 && range > 0.3) {
+            } else if (upperWick > body * 2 && lowerWick < body * 0.5 && range > 0.3) {
                 candle.pattern = { name: "Shooting Star", type: "bearish", icon: "⭐" };
                 currentPattern = candle.pattern;
             }
-            // 3. Doji (Very tiny body relative to range)
-            else if (body < range * 0.1 && range > 0.2) {
-                candle.pattern = { name: "Doji", type: "neutral", icon: "➕" };
-                currentPattern = candle.pattern;
-            }
 
-            // Check Engulfing (Requires previous candle)
             if (chartData.length > 0) {
                 let prev = chartData[chartData.length - 1];
                 let prevBody = Math.abs(prev.close - prev.open);
 
-                // Bullish Engulfing
                 if (prev.close < prev.open && candle.close > candle.open && body > prevBody * 1.3) {
                     candle.pattern = { name: "Bullish Engulfing", type: "bullish", icon: "🟢" };
                     currentPattern = candle.pattern;
-                }
-                // Bearish Engulfing
-                else if (prev.close > prev.open && candle.close < candle.open && body > prevBody * 1.3) {
+                } else if (prev.close > prev.open && candle.close < candle.open && body > prevBody * 1.3) {
                     candle.pattern = { name: "Bearish Engulfing", type: "bearish", icon: "🔴" };
                     currentPattern = candle.pattern;
                 }
@@ -860,21 +878,14 @@
             if (currentPattern.type === 'bullish') {
                 badge.innerText = `${currentPattern.icon} ${currentPattern.name}`;
                 badge.className = "text-[10px] font-bold px-2 py-0.5 bg-emerald-950 text-emerald-400 rounded border border-emerald-800";
-                content.innerHTML = `<p class="font-bold text-emerald-400">Verwachting: Stijging (Bullish)</p><p class="text-slate-300">De kopers nemen de overhand. Handelaren kijken hier vaak naar een KOOP (Long) signaal.</p>`;
-            } else if (currentPattern.type === 'bearish') {
-                badge.innerText = `${currentPattern.icon} ${currentPattern.name}`;
-                badge.className = "text-[10px] font-bold px-2 py-0.5 bg-rose-950 text-rose-400 rounded border border-rose-800";
-                content.innerHTML = `<p class="font-bold text-rose-400">Verwachting: Daling (Bearish)</p><p class="text-slate-300">De verkopers drukken de koers. Handelaren kijken hier vaak naar een VERKOOP (Short) signaal.</p>`;
+                content.innerHTML = `<span class="font-bold text-emerald-400">🟢 ${currentPattern.name} Herkend:</span> Kopers nemen de overhand! Een KOOP order heeft nu hoge kans op succes.`;
             } else {
                 badge.innerText = `${currentPattern.icon} ${currentPattern.name}`;
-                badge.className = "text-[10px] font-bold px-2 py-0.5 bg-amber-950 text-amber-400 rounded border border-amber-800";
-                content.innerHTML = `<p class="font-bold text-amber-400">Verwachting: Twijfel in de Markt</p><p class="text-slate-300">Evenwicht tussen kopers en verkopers. Wees voorzichtig met inzetten.</p>`;
+                badge.className = "text-[10px] font-bold px-2 py-0.5 bg-rose-950 text-rose-400 rounded border border-rose-800";
+                content.innerHTML = `<span class="font-bold text-rose-400">🔴 ${currentPattern.name} Herkend:</span> Verkopers drukken de koers! Een VERKOOP order is nu gunstig.`;
             }
         }
 
-        // ==========================================
-        // NEWSFLASH EVENT ENGINE
-        // ==========================================
         function triggerNewsEvent() {
             const item = newsItems[Math.floor(Math.random() * newsItems.length)];
             pendingNewsImpact = item.impact;
@@ -891,7 +902,7 @@
         }
 
         // ==========================================
-        // TRADING MECHANICS (LONG / SHORT)
+        // MULTI-POSITION TRADING (VERBETERPUNT 3)
         // ==========================================
         function updateBetDisplay() {
             const val = document.getElementById('betSlider').value;
@@ -906,117 +917,147 @@
         }
 
         function openPosition(type) {
-            if (activePos) {
-                showToast("Positie reeds open", "Sluit eerst je huidige inzet voordat je een nieuwe opent.", "⚠️", true);
-                return;
-            }
-
             const amount = parseFloat(document.getElementById('betSlider').value);
             if (amount > player.cash) {
-                showToast("Onvoldoende Kapitaal", "Je hebt niet genoeg geld voor deze inzet.", "❌", true);
+                showToast("Onvoldoende Kapitaal", "Je hebt niet genoeg cash voor deze inzet.", "❌", true);
                 return;
             }
 
             const currentPrice = chartData[chartData.length - 1].close;
 
             player.cash -= amount;
-            activePos = {
-                type: type,
+            
+            const newPos = {
+                id: nextPositionId++,
+                type: type, // 'long' (groen/kopen) or 'short' (rood/verkopen)
                 amount: amount,
                 entryPrice: currentPrice,
-                patternAtEntry: currentPattern ? currentPattern.name : null
+                patternAtEntry: currentPattern ? currentPattern.name : null,
+                currentProfit: 0.00
             };
 
-            // UI Updates
-            document.getElementById('tradingControls').classList.add('hidden');
-            document.getElementById('activePositionPanel').classList.remove('hidden');
+            activePositions.push(newPos);
 
-            document.getElementById('posTypeIcon').className = type === 'long' 
-                ? 'fa-solid fa-arrow-trend-up text-emerald-400' 
-                : 'fa-solid fa-arrow-trend-down text-rose-400';
-            document.getElementById('posType').innerText = type === 'long' ? 'Stijging (Long)' : 'Daling (Short)';
-            document.getElementById('posAmount').innerText = `$ ${amount.toFixed(2)}`;
-            document.getElementById('posEntry').innerText = `$ ${currentPrice.toFixed(2)}`;
+            showToast(
+                type === 'long' ? "Aankoop Geplaatst (Groen)" : "Verkoop Order Geplaatst (Rood)", 
+                `$${amount.toFixed(2)} ingezet op $${currentPrice.toFixed(2)}`, 
+                type === 'long' ? "🟢" : "🔴"
+            );
 
             updateUI();
+            renderPositionsList();
         }
 
-        function updateActivePosition() {
-            if (!activePos) return;
+        function updateAllActivePositions() {
+            if (activePositions.length === 0) return;
 
             const currentPrice = chartData[chartData.length - 1].close;
-            const priceDiff = currentPrice - activePos.entryPrice;
-            const percentChange = priceDiff / activePos.entryPrice;
 
-            let profitMargin = activePos.type === 'long' ? percentChange : -percentChange;
-            
-            // Leverage multiplier x2.5
-            const profitValue = activePos.amount * profitMargin * 2.5;
-            const profitPct = (profitValue / activePos.amount) * 100;
+            activePositions.forEach(pos => {
+                const priceDiff = currentPrice - pos.entryPrice;
+                const percentChange = priceDiff / pos.entryPrice;
+                let profitMargin = pos.type === 'long' ? percentChange : -percentChange;
+                
+                pos.currentProfit = pos.amount * profitMargin * 2.5;
 
-            const profitEl = document.getElementById('posProfit');
-            const profitPctEl = document.getElementById('posProfitPercent');
-
-            if (profitValue >= 0) {
-                profitEl.innerText = `$ +${profitValue.toFixed(2)}`;
-                profitEl.className = 'font-mono text-2xl font-bold text-emerald-400';
-                profitPctEl.innerText = `(+${profitPct.toFixed(1)}%)`;
-                profitPctEl.className = 'font-mono text-xs text-emerald-400 font-bold';
-            } else {
-                profitEl.innerText = `$ -${Math.abs(profitValue).toFixed(2)}`;
-                profitEl.className = 'font-mono text-2xl font-bold text-rose-400';
-                profitPctEl.innerText = `(${profitPct.toFixed(1)}%)`;
-                profitPctEl.className = 'font-mono text-xs text-rose-400 font-bold';
-            }
-
-            // Auto Liquidation if loss > 90%
-            if (profitValue <= -activePos.amount * 0.9) {
-                closePosition(true);
-            }
+                // Update UI elements for each open position item
+                const profEl = document.getElementById(`pos-profit-${pos.id}`);
+                if (profEl) {
+                    const isProfit = pos.currentProfit >= 0;
+                    profEl.innerText = `$ ${isProfit ? '+' : ''}${pos.currentProfit.toFixed(2)}`;
+                    profEl.className = `font-mono font-bold text-xs ${isProfit ? 'text-emerald-400' : 'text-rose-400'}`;
+                }
+            });
         }
 
-        function closePosition(autoBust = false) {
-            if (!activePos) return;
+        function renderPositionsList() {
+            const container = document.getElementById('positionsList');
+            const noPosText = document.getElementById('noPositionsText');
+            const closeAllBtn = document.getElementById('closeAllBtn');
+            const countEl = document.getElementById('openPosCount');
 
-            const currentPrice = chartData[chartData.length - 1].close;
-            const priceDiff = currentPrice - activePos.entryPrice;
-            const percentChange = priceDiff / activePos.entryPrice;
+            countEl.innerText = activePositions.length;
 
-            let profitMargin = activePos.type === 'long' ? percentChange : -percentChange;
-            const profitValue = activePos.amount * profitMargin * 2.5;
-            const finalReturn = activePos.amount + profitValue;
+            if (activePositions.length === 0) {
+                container.innerHTML = `<p id="noPositionsText" class="text-xs text-slate-500 italic text-center py-2">Nog geen openstaande aankopen. Klik op Kopen of Verkopen om een positie te openen.</p>`;
+                closeAllBtn.classList.add('hidden');
+                return;
+            }
+
+            closeAllBtn.classList.remove('hidden');
+            container.innerHTML = '';
+
+            activePositions.forEach(pos => {
+                const isLong = pos.type === 'long';
+                const isProfit = pos.currentProfit >= 0;
+
+                const itemHtml = `
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                        <div class="flex items-center gap-2.5">
+                            <span class="p-2 rounded-lg ${isLong ? 'bg-emerald-950 text-emerald-400 border border-emerald-800' : 'bg-rose-950 text-rose-400 border border-rose-800'}">
+                                <i class="fa-solid ${isLong ? 'fa-arrow-trend-up' : 'fa-arrow-trend-down'}"></i>
+                            </span>
+                            <div>
+                                <p class="font-bold text-white uppercase">${isLong ? 'Kopen (Groen)' : 'Verkopen (Rood)'} <span class="text-slate-400 font-mono text-[10px]">$${pos.amount.toFixed(2)}</span></p>
+                                <p class="text-[10px] text-slate-400">Instap: <span class="font-mono text-white">$${pos.entryPrice.toFixed(2)}</span></p>
+                            </div>
+                        </div>
+
+                        <div class="text-right flex items-center gap-3">
+                            <div>
+                                <span id="pos-profit-${pos.id}" class="font-mono font-bold text-xs ${isProfit ? 'text-emerald-400' : 'text-rose-400'}">
+                                    $ ${isProfit ? '+' : ''}${pos.currentProfit.toFixed(2)}
+                                </span>
+                            </div>
+                            <button onclick="closeSinglePosition(${pos.id})" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg transition text-[10px] border border-slate-700">
+                                Sluiten
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', itemHtml);
+            });
+        }
+
+        function closeSinglePosition(id) {
+            const index = activePositions.findIndex(p => p.id === id);
+            if (index === -1) return;
+
+            const pos = activePositions[index];
+            const finalReturn = pos.amount + pos.currentProfit;
 
             player.tradesCount++;
+            player.cash += Math.max(0, finalReturn);
 
-            if (autoBust) {
-                showToast("Gecrasht!", `Inzet van $${activePos.amount.toFixed(2)} verloren.`, "💥", true);
+            if (pos.currentProfit > 0) {
+                player.winsCount++;
+                let xpGained = 25;
+                if (pos.patternAtEntry) xpGained += 20;
+                addXp(xpGained);
+                showToast("Positie Gesloten met Winst!", `+$${pos.currentProfit.toFixed(2)}`, "💰");
             } else {
-                player.cash += Math.max(0, finalReturn);
-
-                if (profitValue > 0) {
-                    player.winsCount++;
-                    let xpGained = 25;
-
-                    // Bonus XP for trading with patterns
-                    if (activePos.patternAtEntry) {
-                        xpGained += 20;
-                        showToast("Patroon Bonus Winst!", `+$${profitValue.toFixed(2)} en +${xpGained} XP!`, "🎯");
-                    } else {
-                        showToast("Winst Gepakt!", `+$${profitValue.toFixed(2)} en +${xpGained} XP!`, "💰");
-                    }
-
-                    addXp(xpGained);
-                } else {
-                    showToast("Verlies Genomen", `-$${Math.abs(profitValue).toFixed(2)}.`, "📉", true);
-                }
+                showToast("Positie Gesloten", `-$${Math.abs(pos.currentProfit).toFixed(2)}`, "📉", true);
             }
 
-            activePos = null;
-
-            document.getElementById('activePositionPanel').classList.add('hidden');
-            document.getElementById('tradingControls').classList.remove('hidden');
-
+            activePositions.splice(index, 1);
             updateUI();
+            renderPositionsList();
+        }
+
+        function closeAllPositions(silent = false) {
+            if (activePositions.length === 0) return;
+
+            activePositions.forEach(pos => {
+                const finalReturn = pos.amount + pos.currentProfit;
+                player.tradesCount++;
+                player.cash += Math.max(0, finalReturn);
+                if (pos.currentProfit > 0) player.winsCount++;
+            });
+
+            activePositions = [];
+            if (!silent) showToast("Alle Posities Gesloten", "Alle openstaande orders zijn afgewikkeld.", "🧹");
+            updateUI();
+            renderPositionsList();
         }
 
         function payOffDebt() {
@@ -1026,7 +1067,7 @@
                 addXp(50);
 
                 if (player.debt === 0) {
-                    showToast("SCHULD VOLLEDIG AFGEBETAALD!", "Gefeliciteerd! Je bent schuldvrij!", "🎉");
+                    showToast("SCHULD AFGEBETAALD!", "Gefeliciteerd! Je bent schuldvrij!", "🎉");
                 } else {
                     showToast("Schuld Afbetaald", "$100 afgelost op je schuld.", "🏦");
                 }
@@ -1053,7 +1094,6 @@
             document.getElementById('playerXp').innerText = `${player.xp}`;
             document.getElementById('playerLevelDisplay').innerText = `${player.level} (${player.level === 1 ? 'Beginner' : player.level === 2 ? 'Gevorderd' : 'Tycoon'})`;
 
-            // Debt Box handling
             const debtBox = document.getElementById('debtHeaderBox');
             const payDebtContainer = document.getElementById('payDebtContainer');
             if (modesConfig[currentMode].hasDebt) {
@@ -1065,7 +1105,6 @@
                 payDebtContainer.classList.add('hidden');
             }
 
-            // Bet Slider Max adjustment
             const slider = document.getElementById('betSlider');
             const maxBet = Math.max(10, Math.min(player.cash, 200));
             slider.max = Math.floor(maxBet);
@@ -1074,43 +1113,6 @@
                 slider.value = Math.floor(maxBet);
                 updateBetDisplay();
             }
-        }
-
-        function switchMode(modeKey) {
-            if (activePos) {
-                showToast("Actieve Trade", "Sluit eerst je huidige trade voordat je van modus wisselt.", "⚠️", true);
-                return;
-            }
-
-            currentMode = modeKey;
-            const cfg = modesConfig[modeKey];
-
-            document.getElementById('currentModeTitle').innerText = cfg.name;
-            document.getElementById('currentModeTag').innerText = cfg.tag;
-            document.getElementById('currentModeDesc').innerText = cfg.desc;
-
-            // Reset mode buttons styling
-            ['classic', 'newsflash', 'debt', 'chaos', 'pattern'].forEach(m => {
-                const btn = document.getElementById(`mode-btn-${m}`);
-                if (m === modeKey) {
-                    btn.classList.add('bg-slate-800', 'border-brand-500');
-                    btn.classList.remove('bg-slate-900');
-                } else {
-                    btn.classList.remove('bg-slate-800', 'border-brand-500');
-                    btn.classList.add('bg-slate-900');
-                }
-            });
-
-            if (cfg.hasDebt) {
-                player.debt = cfg.startDebt;
-            } else {
-                player.debt = 0.00;
-            }
-
-            updateUI();
-            initChartData();
-            startSimulation();
-            showToast("Modus Gewisseld", `Ingeschakeld: ${cfg.name}`, "🎮");
         }
 
         function showToast(title, sub, emoji = "🎯", isBad = false) {
@@ -1155,7 +1157,7 @@
                 return h - pad - ((v - minP) / (maxP - minP)) * (h - pad * 2);
             };
 
-            // Draw Background Grid
+            // Grid
             ctx.strokeStyle = '#1e293b';
             ctx.lineWidth = 1;
             for(let y = pad; y < h; y += 40) {
@@ -1165,24 +1167,20 @@
                 ctx.stroke();
             }
 
-            // Draw Entry Price dashed line if trade active
-            if (activePos) {
-                const yEntry = getY(activePos.entryPrice);
-                ctx.strokeStyle = activePos.type === 'long' ? '#10b981' : '#f43f5e';
-                ctx.lineWidth = 1.5;
-                ctx.setLineDash([6, 6]);
+            // Entry lines for active positions
+            activePositions.forEach(pos => {
+                const yEntry = getY(pos.entryPrice);
+                ctx.strokeStyle = pos.type === 'long' ? '#10b981' : '#f43f5e';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([4, 4]);
                 ctx.beginPath();
                 ctx.moveTo(0, yEntry);
                 ctx.lineTo(w, yEntry);
                 ctx.stroke();
                 ctx.setLineDash([]);
+            });
 
-                ctx.fillStyle = ctx.strokeStyle;
-                ctx.font = "bold 10px Inter";
-                ctx.fillText(`INZET: $${activePos.entryPrice.toFixed(2)}`, pad, yEntry - 6);
-            }
-
-            // Draw Candlesticks & Pattern Annotations
+            // Candlesticks
             const candleWidth = Math.max(5, (w - pad * 2) / chartData.length - 4);
 
             chartData.forEach((c, i) => {
@@ -1193,7 +1191,7 @@
                 ctx.strokeStyle = color;
                 ctx.fillStyle = color;
 
-                // Wick (Spriet)
+                // Wick
                 ctx.beginPath();
                 ctx.moveTo(x, getY(c.high));
                 ctx.lineTo(x, getY(c.low));
@@ -1206,7 +1204,6 @@
 
                 ctx.fillRect(x - candleWidth / 2, top, candleWidth, height);
 
-                // Pattern Icon Annotation on Canvas
                 if (c.pattern) {
                     ctx.font = "12px Inter";
                     ctx.textAlign = "center";
@@ -1218,7 +1215,7 @@
         window.addEventListener('resize', drawChart);
 
         // ==========================================
-        // TUTORIAL MODAL FLOW CONTROL
+        // TUTORIAL MODAL SLIDER CONTROL (VERBETERPUNT 4)
         // ==========================================
         let tutStep = 1;
 
@@ -1226,6 +1223,11 @@
             tutStep = 1;
             updateTutModal();
             document.getElementById('tutorialModal').classList.remove('hidden');
+        }
+
+        function onTutSliderChange(val) {
+            tutStep = parseInt(val);
+            updateTutModal();
         }
 
         function changeTutStep(dir) {
@@ -1240,6 +1242,7 @@
 
         function updateTutModal() {
             document.getElementById('tutStepBadge').innerText = `Stap ${tutStep} van 4`;
+            document.getElementById('tutRangeSlider').value = tutStep;
 
             [1, 2, 3, 4].forEach(s => {
                 const el = document.getElementById(`tutStep${s}`);
@@ -1259,7 +1262,7 @@
             }
 
             if (tutStep === 4) {
-                nextBtn.innerText = "START MET TRADEN!";
+                nextBtn.innerText = "START TRADING!";
             } else {
                 nextBtn.innerHTML = 'Volgende <i class="fa-solid fa-arrow-right ml-1"></i>';
             }
